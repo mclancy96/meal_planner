@@ -13,7 +13,7 @@ app.use(
     })
 );
 require("dotenv").config();
-
+const PORT = process.env.PORT;
 
 // Import routes
 const studentRoutes = require('./routes/student_routes.js');
