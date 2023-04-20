@@ -16,7 +16,7 @@ require("dotenv").config();
 const PORT = process.env.PORT;
 
 // Import routes
-const studentRoutes = require('./routes/student_routes.js');
+const studentRoutes = require('./routes/ingredient_routes.js');
 
 app.use(express.static(__dirname + "/public"));
 app.set("view engine", "ejs");
