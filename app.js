@@ -39,5 +39,3 @@ app.listen(PORT, function () {            // This is the basic syntax for what i
     console.log('Express started on http://localhost:' + PORT + '; press Ctrl-C to terminate.')
 });
 
-
-
