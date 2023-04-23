@@ -1,49 +1,48 @@
-<%- include('../partials/header', {pageTitle:"Edit Ingredients"}) %>
-<h1 class="text-center">Edit Ingredient</h1>
+<%- include('../partials/header', {pageTitle: "Add Ingredient"}) %>
+<h2 class="text-center">Add a New Ingredient</h2>
 <div class="container">
-  <form action="/ingredients/<%=ingredient.ingredient_id%>/edit" method="POST">
-    <p>Ingredient ID: <%=ingredient.ingredient_id%></p>
+  <form action="/ingredients/create" method="POST">
     <div class="form-group">
-      <label for="editIngredientName">Ingredient Name</label>
+      <label for="addIngredientName">New Ingredient Name</label>
       <input
         type="text"
         class="form-control"
-        id="editIngredientName"
+        id="addIngredientName"
         name="name"
-        value="<%=ingredient.name%>"
+        placeholder="Enter New Ingredient Name"
         required
       />
     </div>
     <div class="form-group">
-      <label for="editAddress">Street Address</label>
+      <label for="addAddress">Street Address</label>
       <input
         type="text"
         class="form-control"
-        id="editAddress"
+        id="addAddress"
         name="street_address"
-        value="<%=ingredient.street_address%>"
+        placeholder="Enter Street Address"
         required
       />
     </div>
     <div class="form-group">
-      <label for="editCity">City</label>
+      <label for="addCity">City</label>
       <input
         type="text"
         class="form-control"
-        id="editCity"
+        id="addCity"
+        placeholder="Enter City"
         name="city"
-        value="<%=ingredient.city%>"
         required
       />
     </div>
     <div class="form-group">
-      <label for="editState">State</label>
+      <label for="addState">State</label>
       <input
         type="text"
         class="form-control"
-        id="editState"
+        id="addState"
         name="state"
-        value="<%=ingredient.state%>"
+        placeholder="Enter State"
         aria-describedby="stateHelp"
         required
       />
@@ -52,24 +51,24 @@
       >
     </div>
     <div class="form-group">
-      <label for="editZipCode">Zip Code</label>
+      <label for="addZipCode">Zip Code</label>
       <input
         type="number"
         class="form-control"
-        id="editZipCode"
+        id="addZipCode"
         name="zip_code"
-        value="<%=ingredient.zip_code%>"
+        placeholder="Enter Zip Code"
         required
       />
     </div>
     <div class="form-group">
-      <label for="editEmail">Email</label>
+      <label for="addEmail">Email</label>
       <input
         type="email"
         class="form-control"
-        id="editEmail"
+        id="addEmail"
         name="email"
-        value="<%=ingredient.email%>"
+        placeholder="Enter Email"
         required
       />
     </div>
@@ -80,7 +79,7 @@
         class="form-control"
         id="editPhone"
         name="phone_number"
-        value="<%=ingredient.phone_number%>"
+        placeholder="Enter Phone Number"
         aria-describedby="phoneHelp"
         required
       />
@@ -88,10 +87,9 @@
         >Example: <i>123-456-7890</i></small
       >
     </div>
-    <a href="/ingredients"
-      ><button type="button" class="btn btn-secondary">Cancel</button></a
-    >
-    <button type="submit" class="btn btn-primary">Update</button>
+    <div class="text-center m-3">
+      <button type="submit" class="btn btn-primary">Create Ingredient</button>
+    </div>
   </form>
 </div>
 <%- include('../partials/footer') %>
