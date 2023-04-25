@@ -11,11 +11,19 @@
         <b>Cook Time:</b> 10 minutes
       </p>
       <a href="#" class="btn btn-primary">Go to recipe</a>
-      <br />
-      <p class="card-text">
-        <a href="#" class="card-link">Change meal</a>
-        <a href="#" class="card-link">Edit recipe</a>
-      </p>
+    </div>
+    <div class="card-footer">
+      <a
+        href="#"
+        class="card-link"
+        data-bs-toggle="modal"
+        data-bs-target="#dayModal"
+        >Change meal</a
+      >
+      <!-- TODO: Make sure to make id unique^^^^ -->
+      <a href="#" class="card-link">Edit recipe</a>
     </div>
   </div>
 </div>
+
+<%- include("edit_day_modal") %>
