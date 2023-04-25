@@ -28,6 +28,12 @@ router.post('/ingredients/create', async function (req, res) {
     }
 });
 
+// New Ingredient Page
+router.get('/ingredients/new', async function (req, res) {
+    // Get all aisles and pass them down
+    res.render("ingredients/add_ingredients");
+});
+
 // Read One
 router.get('/ingredients/:id/edit', async function (req, res) {
     const ingredientResult = await ingredients.getIngredientById(req.params.id);
