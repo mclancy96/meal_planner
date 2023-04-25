@@ -27,7 +27,7 @@ app.set("view engine", "ejs");
 */
 
 app.get('/', async function (req, res) {
-    res.sendFile("./index.html", { root: __dirname });
+    res.render("index");
 });
 
 app.use(ingredientRoutes);
