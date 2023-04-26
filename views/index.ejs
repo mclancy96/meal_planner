@@ -4,10 +4,10 @@
   <h1 class="text-center">Meal Planner</h1>
   <p>Welcome to the meal planner!</p>
   <p>Below are the planned dinners for the next 7 days:</p>
+  <p><%=days%></p>
   <div class="row row-cols-1 row-cols-md-4 g-4">
-    <%- include('partials/day_card')%> <%- include('partials/day_card')%> <%-
-    include('partials/day_card')%> <%- include('partials/day_card')%> <%-
-    include('partials/day_card_empty')%>
+    <% for (day of days){%> <% let date = new Date(day)%> <%-
+    include('partials/day_card',{day:date.toDateString()})%> <%} %>
   </div>
 </div>
 

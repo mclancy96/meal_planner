@@ -14,6 +14,7 @@ app.use(
 );
 require("dotenv").config();
 const PORT = process.env.PORT;
+const auxFuncs = require('./public/auxiliary')
 
 // Import routes
 const ingredientRoutes = require('./routes/ingredient_routes.js');
@@ -27,7 +28,8 @@ app.set("view engine", "ejs");
 */
 
 app.get('/', async function (req, res) {
-    res.render("index");
+    const days = auxFuncs.getDayList();
+    res.render("index", { days: days });
 });
 
 app.use(ingredientRoutes);
