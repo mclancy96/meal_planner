@@ -3,7 +3,7 @@
  */
 const express = require('express');
 const router = express.Router();
-const ingredients = require('../services/ingredients');
+const ingredients = require('../services/ingredient_services');
 router.use(
     express.urlencoded({
         extended: true,
