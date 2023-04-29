@@ -1,0 +1,56 @@
+<%- include('../partials/header', {pageTitle:"Edit Ingredients"}) %>
+<h1 class="text-center">Edit Ingredient</h1>
+<div class="container">
+  <form action="/ingredients/<%=ingredient.ingredient_id%>/edit" method="POST">
+    <p>Ingredient ID: <%=ingredient.ingredient_id%></p>
+    <div class="form-group">
+      <label for="editIngredientName">Ingredient Name</label>
+      <input
+        type="text"
+        class="form-control"
+        id="editIngredientName"
+        name="name"
+        value="<%=ingredient.name%>"
+        required
+      />
+    </div>
+    <div class="form-group">
+      <label for="editAisle">Aisle</label>
+      <input
+        type="text"
+        class="form-control"
+        id="editAisle"
+        name="aisle"
+        value="<%=ingredient.aisle%>"
+        required
+      />
+    </div>
+    <div class="form-group">
+      <label for="editTemperature">Temperature</label>
+      <input
+        type="text"
+        class="form-control"
+        id="editTemperature"
+        name="temperature"
+        value="<%=ingredient.temperature%>"
+        required
+      />
+    </div>
+    <div class="form-group">
+      <label for="editDetails">Details</label>
+      <input
+        type="text"
+        class="form-control"
+        id="editDetails"
+        name="details"
+        value="<%=ingredient.details%>"
+        required
+      />
+    </div>
+    <a href="/ingredients"
+      ><button type="button" class="btn btn-secondary">Cancel</button></a
+    >
+    <button type="submit" class="btn btn-primary">Update</button>
+  </form>
+</div>
+<%- include('../partials/footer') %>
