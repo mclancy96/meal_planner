@@ -36,7 +36,9 @@ app.set("view engine", "ejs");
 
 app.get('/', async function (req, res) {
     const days = dateFuncs.getDayList();
-    console.log(dateFuncs.getStartAndEndDate());
+    const dateRange = dateFuncs.getStartAndEndDate();
+    const plannedMeals = await plannedMealServices.getPlannedMeals(dateRange[0], dateRange[1]);
+    console.log(plannedMeals);
     res.render("index", { days: days });
 });
 

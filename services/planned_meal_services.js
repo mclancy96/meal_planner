@@ -5,9 +5,8 @@
 const db = require('./db');
 
 async function getPlannedMeals(startDate, endDate) {
-
     const plannedMeals = await db.query(
-        `SELECT * FROM Planned_Meals where date between ${startDate} and ${endDate}`
+        `SELECT * FROM Planned_Meals where date between '${startDate}' and '${endDate}';`
     );
 
     return plannedMeals;
