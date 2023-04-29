@@ -1,0 +1,50 @@
+<%- include('../partials/header', {pageTitle: "Ingredients"}) %>
+<h1 class="text-center">Ingredients</h1>
+<h2 class="text-center">Display all Ingredients</h2>
+<p class="text-center"><a href="ingredients/new">Add New Ingredient</a></p>
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-auto">
+      <table class="table table-bordered table-responsive">
+        <thead>
+          <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Name</th>
+            <th scope="col">Aisle</th>
+            <th scope="col">Temperature</th>
+            <th scope="col">Details</th>
+            <th scope="col">Edit Ingredient</th>
+            <th scope="col">Delete Ingredient</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% ingredients.forEach(ingredient => {%>
+          <tr>
+            <th scope="row"><%=ingredient.ingredient_id%></th>
+            <td><%=ingredient.name%></td>
+            <td><%=ingredient.aisle%></td>
+            <td><%=ingredient.temperature%></td>
+            <td><%=ingredient.details%></td>
+            <td class="text-center">
+              <a href="/ingredients/<%=ingredient.ingredient_id%>/edit"
+                ><button type="submit" class="btn btn-success">Edit</button></a
+              >
+            </td>
+            <td>
+              <div class="text-center">
+                <form
+                  action="/ingredients/<%= ingredient.ingredient_id %>/delete"
+                  method="POST"
+                >
+                  <button type="submit" class="btn btn-danger">Delete</button>
+                </form>
+              </div>
+            </td>
+          </tr>
+          <% }) %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+<%- include('../partials/footer') %>
