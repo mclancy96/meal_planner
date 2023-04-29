@@ -14,10 +14,17 @@ app.use(
 );
 require("dotenv").config();
 const PORT = process.env.PORT;
-const auxFuncs = require('./public/auxiliary')
+const dateFuncs = require('./public/dateFunctions')
 
 // Import routes
 const ingredientRoutes = require('./routes/ingredient_routes.js');
+const mealRoutes = require('./routes/meal_routes.js');
+const aisleRoutes = require('./routes/aisle_routes.js');
+const recipeRoutes = require('./routes/recipe_routes.js');
+const plannedMealRoutes = require('./routes/planned_meal_routes.js');
+
+// Services
+const plannedMealServices = require('./services/planned_meal_services');
 
 app.use(express.static(__dirname + "/public"));
 app.set("view engine", "ejs");
@@ -28,11 +35,16 @@ app.set("view engine", "ejs");
 */
 
 app.get('/', async function (req, res) {
-    const days = auxFuncs.getDayList();
+    const days = dateFuncs.getDayList();
+    console.log(dateFuncs.getStartAndEndDate());
     res.render("index", { days: days });
 });
 
 app.use(ingredientRoutes);
+app.use(mealRoutes);
+app.use(aisleRoutes);
+app.use(recipeRoutes);
+app.use(plannedMealRoutes);
 
 /*
     LISTENER

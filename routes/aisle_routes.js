@@ -3,7 +3,7 @@
  */
 const express = require('express');
 const router = express.Router();
-const aisles = require('../services/aisles');
+const aisles = require('../services/aisle_services');
 router.use(
     express.urlencoded({
         extended: true,
