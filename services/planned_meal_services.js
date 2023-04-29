@@ -4,7 +4,7 @@
 
 const db = require('./db');
 
-async function getPlanned_Meals() {
+async function getPlannedMeals() {
 
     const plannedMeals = await db.query(
         `SELECT * FROM Planned_Meals`
@@ -13,75 +13,44 @@ async function getPlanned_Meals() {
     return plannedMeals;
 }
 
-async function getPlanned_MealById(plannedMealId) {
+async function getPlannedMealById(plannedMealId) {
     const plannedMeal = await db.query(
-        `SELECT * FROM Planned_Meals WHERE plannedMeal_id = ${plannedMealId}`
+        `SELECT * FROM Planned_Meals WHERE planned_meal_id = ${plannedMealId}`
     );
     return plannedMeal;
 }
 
-async function createPlanned_Meal(plannedMealObject) {
+async function createPlannedMeal(plannedMealObject) {
     const updateStatus = await db.query(
-        `INSERT INTO Planned_Meals (name, street_address, city, state, zip_code, email, phone_number)
-        VALUES("${plannedMealObject.name}", 
-        "${plannedMealObject.street_address}",
-        "${plannedMealObject.city}", 
-        "${plannedMealObject.state}", 
-        "${plannedMealObject.zip_code}", 
-        "${plannedMealObject.email}", 
-        "${plannedMealObject.phone_number}");`
+        `INSERT INTO Planned_Meals (date, meal_id)
+        VALUES("${plannedMealObject.date}", 
+        "${plannedMealObject.meal_id}");`
     );
     return updateStatus;
 }
 
-async function updatePlanned_Meal(plannedMealId, plannedMealObject) {
+async function updatePlannedMeal(plannedMealId, plannedMealObject) {
     const updateStatus = await db.query(
         `UPDATE Planned_Meals
-        SET name = "${plannedMealObject.name}", 
-        street_address= "${plannedMealObject.street_address}",
-        city="${plannedMealObject.city}", 
-        state="${plannedMealObject.state}", 
-        zip_code = "${plannedMealObject.zip_code}", 
-        email = "${plannedMealObject.email}", 
-        phone_number= "${plannedMealObject.phone_number}"
-        WHERE plannedMeal_id = "${plannedMealId}";`
+        SET date = "${plannedMealObject.date}", 
+        meal_id= "${plannedMealObject.meal_id}"
+        WHERE planned_meal_id = "${plannedMealId}";`
     );
     return updateStatus;
 }
 
-async function deletePlanned_Meal(plannedMealId) {
-
-    // obtain all the classes that the plannedMeal is registered for
-    const registeredClasses = await db.query(
-        `SELECT class_id FROM Registrations WHERE plannedMeal_id = "${plannedMealId}";`
-    );
-
-    // as long as a plannedMeal is registered for a class, loop through all the classes and decrement class_enrollment by 1
-    if (registeredClasses.length !== 0) {
-        for (class_obj of registeredClasses) {
-            const cur_enrollment_now = await db.query(
-                `SELECT current_enrollment FROM Classes WHERE class_id = ${class_obj.class_id};`
-            );
-            const cur_enrollment_now_num = cur_enrollment_now[0].current_enrollment
-
-            await db.query(`
-                UPDATE Classes
-                SET current_enrollment = ${cur_enrollment_now_num - 1}
-                WHERE class_id = ${class_obj.class_id}`);
-        }
-    }
-
+async function deletePlannedMeal(plannedMealId) {
     const updateStatus = await db.query(
-        `DELETE FROM Planned_Meals WHERE plannedMeal_id = "${plannedMealId}";`
+        `DELETE FROM Planned_Meals WHERE planned_meal_id = "${plannedMealId}";`
     );
 
     return updateStatus;
 }
 
 module.exports = {
-    getPlanned_Meals,
-    getPlanned_MealById,
-    createPlanned_Meal,
-    updatePlanned_Meal,
-    deletePlanned_Meal
+    getPlannedMeals,
+    getPlannedMealById,
+    createPlannedMeal,
+    updatePlannedMeal,
+    deletePlannedMeal
 }
