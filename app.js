@@ -25,6 +25,8 @@ const plannedMealRoutes = require('./routes/planned_meal_routes.js');
 
 // Services
 const plannedMealServices = require('./services/planned_meal_services');
+const mealServices = require('./services/meal_services');
+// const recipeServices = require('./services/recipe_services');
 
 app.use(express.static(__dirname + "/public"));
 app.set("view engine", "ejs");
@@ -39,7 +41,13 @@ app.get('/', async function (req, res) {
     const dateRange = dateFuncs.getStartAndEndDate();
     const plannedMeals = await plannedMealServices.getPlannedMeals(dateRange[0], dateRange[1]);
     console.log(plannedMeals);
-    res.render("index", { days: days });
+    const mealList = [];
+    for (meal of plannedMeals) {
+        const mealDetails = await mealServices.getMealById(meal.meal_id);
+        mealList.push(mealDetails[0])
+    }
+    console.log(mealList);
+    res.render("index", { days: days, meals: mealList, plannedMeals: plannedMeals });
 });
 
 app.use(ingredientRoutes);
