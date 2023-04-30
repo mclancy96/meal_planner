@@ -2,28 +2,24 @@
   <div class="card">
     <h5 class="card-header"><%= day%></h5>
     <div class="card-body">
-      <h5 class="card-title">Baked Potato</h5>
+      <% let meal = meals.find(e => e['meal_id'] == plannedMeal['meal_id'])%>
+      <h5 class="card-title"><%=meal.name%></h5>
       <p class="card-text">
-        <b>Calories:</b> 1090
+        <b>Calories:</b> <%= meal.calories%>
         <br />
-        <b>Servings:</b> 6
+        <b>Servings:</b> <%= meal.servings%>
         <br />
-        <b>Cook Time:</b> 10 minutes
+        <b>Cook Time:</b> <%= meal.cookTime%>
       </p>
-      <a href="#" class="btn btn-primary">Go to recipe</a>
+      <%if(meal.recipe_url){%>
+      <a href="<%=meal.recipe_url%>" target="_blank" class="btn btn-primary">Go to recipe</a>
+      <%}%>
     </div>
     <div class="card-footer">
-      <a
-        href="#"
-        class="card-link"
-        data-bs-toggle="modal"
-        data-bs-target="#dayModal"
-        >Change meal</a
-      >
-      <!-- TODO: Make sure to make id unique^^^^ -->
-      <a href="#" class="card-link">Edit recipe</a>
+      <a href="#" class="card-link" data-bs-toggle="modal" data-bs-target="#dayModal<%=plannedMeal.planned_meal_id%>">Change meal</a>
+      <a href="/meals/<%=plannedMeal.planned_meal_id%>/edit" class="card-link">Edit recipe</a>
     </div>
   </div>
 </div>
 
-<%- include("edit_day_modal") %>
+<%- include("edit_day_modal", {meals:meals, id:plannedMeal.planned_meal_id, day:day}) %>

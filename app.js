@@ -47,7 +47,11 @@ app.get('/', async function (req, res) {
         mealList.push(mealDetails[0])
     }
     console.log(mealList);
-    res.render("index", { days: days, meals: mealList, plannedMeals: plannedMeals });
+    try {
+        res.render("index", { days: days, meals: mealList, plannedMeals: plannedMeals });
+    } catch (err) {
+        console.log(err);
+    }
 });
 
 app.use(ingredientRoutes);

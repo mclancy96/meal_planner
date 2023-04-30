@@ -5,11 +5,16 @@
   <p>Welcome to the meal planner!</p>
   <p>Below are the planned dinners for the next 30 days:</p>
   <div class="row row-cols-1 row-cols-md-3 g-4">
-    <% for (day of days){%> <% let date = new Date(day)%> <% let plannedMeal =
-    plannedMeals.find(e => e.date.getTime() == date.getTime())%> <%
-    if(plannedMeal){%> <%- include('partials/day_card',{day:date.toDateString(),
-    plannedMeal:plannedMeal})%> <%} else {%> <%-
-    include('partials/day_card_empty',{day:date.toDateString()})%> <%} %> <%} %>
+    <% for (day of days){%>
+    <% let date = new Date(day)%>
+    <% let plannedMeal = plannedMeals.find(e => e['date'].getTime() == date.getTime())%>
+    <% let dateString = date.toDateString()%>
+    <%if(plannedMeal){%>
+    <%- include('partials/day_card',{day:dateString, plannedMeal:plannedMeal, meals:meals})%>
+    <%} else {%>
+    <%- include('partials/day_card_empty',{day:dateString, meals:meals})%>
+    <%} %>
+    <%} %>
   </div>
 </div>
 
