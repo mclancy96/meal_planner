@@ -1,7 +1,7 @@
-<%- include('../partials/header', {pageTitle: "Ingredients"}) %>
-<h1 class="text-center">Ingredients</h1>
-<h2 class="text-center">Display all Ingredients</h2>
-<p class="text-center"><a href="ingredients/new">Add New Ingredient</a></p>
+<%- include('../partials/header', {pageTitle: "Meals"}) %>
+<h1 class="text-center">Meals</h1>
+<h2 class="text-center">Display all Meals</h2>
+<p class="text-center"><a href="meals/new">Add New Meal</a></p>
 <div class="container">
   <div class="row justify-content-center">
     <div class="col-auto">
@@ -9,33 +9,30 @@
         <thead>
           <tr>
             <th scope="col">ID</th>
-            <th scope="col">Name</th>
-            <th scope="col">Aisle</th>
-            <th scope="col">Temperature</th>
-            <th scope="col">Details</th>
-            <th scope="col">Edit Ingredient</th>
-            <th scope="col">Delete Ingredient</th>
+            <th scope="col">Name <br>(click for ingredients)</th>
+            <th scope="col">Servings</th>
+            <th scope="col">Calories</th>
+            <th scope="col">Cook Time</th>
+            <th scope="col">Recipe URL</th>
+            <th scope="col">Edit Meal</th>
+            <th scope="col">Delete Meal</th>
           </tr>
         </thead>
         <tbody>
-          <% ingredients.forEach(ingredient => {%>
+          <% meals.forEach(meal => {%>
           <tr>
-            <th scope="row"><%=ingredient.ingredient_id%></th>
-            <td><%=ingredient.name%></td>
-            <td><%=ingredient.aisle%></td>
-            <td><%=ingredient.temperature%></td>
-            <td><%=ingredient.details%></td>
+            <th scope="row"><%=meal.meal_id%></th>
+            <td><a href="/meal/<%=meal.meal_id%>"><%=meal.name%></a></td>
+            <td><%=meal.servings%></td>
+            <td><%=meal.calories%></td>
+            <td><%=meal.cookTime%></td>
+            <td><%=meal.recipe_url%></td>
             <td class="text-center">
-              <a href="/ingredients/<%=ingredient.ingredient_id%>/edit"
-                ><button type="submit" class="btn btn-success">Edit</button></a
-              >
+              <a href="/meals/<%=meal.meal_id%>/edit"><button type="submit" class="btn btn-success">Edit</button></a>
             </td>
             <td>
               <div class="text-center">
-                <form
-                  action="/ingredients/<%= ingredient.ingredient_id %>/delete"
-                  method="POST"
-                >
+                <form action="/meals/<%= meal.meal_id %>/delete" method="POST">
                   <button type="submit" class="btn btn-danger">Delete</button>
                 </form>
               </div>
