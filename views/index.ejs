@@ -4,7 +4,7 @@
   <h1 class="text-center">Meal Planner</h1>
   <p>Welcome to the meal planner!</p>
   <p>Below are the planned dinners for the next 30 days:</p>
-  <div class="row row-cols-1 row-cols-md-3 g-4">
+  <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
     <% for (day of days){%>
     <% let date = new Date(day)%>
     <% let plannedMeal = plannedMeals.find(e => e['date'].getTime() == date.getTime())%>
