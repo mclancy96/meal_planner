@@ -14,14 +14,17 @@
     </form>
   </div>
 </div>
-<h1 class="text-center">Recipe for Meal</h1>
-<p class="text-center"><a href="meals/new">Add New Meal</a></p>
+<hr>
+<h1 class="text-center">Recipe for <%=meal.name%></h1>
 <div class="container">
   <ul>
     <%ingredients.forEach(ingredient => {%>
     <li><%= ingredient.amount%> <%= ingredient.unit%> <a href='/ingredients/<%=ingredient.ingredient_id%>'><%= ingredient.name%></a></li>
     <%})%>
   </ul>
+  <div class="text-center">
+    <a href="/recipes/<%=meal.meal_id%>/edit"><button type="submit" class="btn btn-success">Edit Recipe</button></a>
+  </div>
 </div>
 
 <%- include('../partials/footer') %>
