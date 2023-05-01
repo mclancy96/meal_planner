@@ -4,6 +4,7 @@
 const express = require('express');
 const router = express.Router();
 const meals = require('../services/meal_services');
+const recipes = require('../services/recipe_services');
 router.use(
     express.urlencoded({
         extended: true,
@@ -14,6 +15,13 @@ router.use(
 router.get('/meals', async function (req, res) {
     const mealResults = await meals.getMeals();
     res.render("meals/meals", { meals: mealResults });
+});
+
+// Read one
+router.get('/meals/:id', async function (req, res) {
+    const mealResult = await meals.getMealById(req.params.id);
+    const ingredientsResult = await recipes.getRecipeByMealId(req.params.id);
+    res.render("meals/meal_single", { meal: mealResult[0], ingredients: ingredientsResult });
 });
 
 // Create

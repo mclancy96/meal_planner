@@ -22,7 +22,7 @@
           <% meals.forEach(meal => {%>
           <tr>
             <th scope="row"><%=meal.meal_id%></th>
-            <td><a href="/meal/<%=meal.meal_id%>"><%=meal.name%></a></td>
+            <td><a href="/meals/<%=meal.meal_id%>"><%=meal.name%></a></td>
             <td><%=meal.servings%></td>
             <td><%=meal.calories%></td>
             <td><%=meal.cookTime%></td>

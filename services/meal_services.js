@@ -7,7 +7,7 @@ const db = require('./db');
 async function getMeals() {
 
     const meals = await db.query(
-        `SELECT * FROM Meals`
+        `SELECT * FROM Meals;`
     );
 
     return meals;
@@ -15,7 +15,7 @@ async function getMeals() {
 
 async function getMealById(mealId) {
     const meal = await db.query(
-        `SELECT * FROM Meals WHERE meal_id = ${mealId}`
+        `SELECT * FROM Meals WHERE meal_id = ${mealId};`
     );
     return meal;
 }

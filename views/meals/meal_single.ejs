@@ -1,0 +1,23 @@
+<%- include('../partials/header', {pageTitle: "Meals"}) %>
+<h1 class="text-center">Meal</h1>
+<p class="text-center"><a href="meals/new">Add New Meal</a></p>
+<div class="container">
+  <p><b>Name</b> <%=meal.name%></p>
+  <p><b>Servings</b> <%=meal.servings%></p>
+  <p><b>Calories</b> <%=meal.calories%></p>
+  <p><b>Cook Time</b> <%=meal.cookTime%></p>
+  <p><b>URL</b> <%=meal.recipe_url%></p>
+  <div class="text-center">
+    <a href="/meals/<%=meal.meal_id%>/edit"><button type="submit" class="btn btn-success">Edit Meal Info</button></a>
+    <form action="/meals/<%= meal.meal_id %>/delete" method="POST">
+      <button type="submit" class="btn btn-danger">Delete Meal</button>
+    </form>
+  </div>
+</div>
+<h1 class="text-center">Recipe for Meal</h1>
+<p class="text-center"><a href="meals/new">Add New Meal</a></p>
+<div class="container">
+  <p><%=ingredients%></p>
+</div>
+
+<%- include('../partials/footer') %>

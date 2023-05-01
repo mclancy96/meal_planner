@@ -20,6 +20,13 @@ async function getRecipeById(recipeId) {
     return recipe;
 }
 
+async function getRecipeByMealId(mealId) {
+    const recipe = await db.query(
+        `SELECT * FROM Recipes INNER JOIN Ingredients ON Recipes.ingredient_id = Ingredients.ingredient_id WHERE meal_id = ${mealId};`
+    );
+    return recipe;
+}
+
 async function createRecipe(recipeObject) {
     const updateStatus = await db.query(
         `INSERT INTO Recipes (meal_id, ingredient_id, amount, unit)
@@ -54,6 +61,7 @@ async function deleteRecipe(recipeId) {
 module.exports = {
     getRecipes,
     getRecipeById,
+    getRecipeByMealId,
     createRecipe,
     updateRecipe,
     deleteRecipe
