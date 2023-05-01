@@ -1,4 +1,4 @@
-<%- include('../partials/header', {pageTitle: "Meals"}) %>
+<%- include('../partials/header', {pageTitle: "Meal Details"}) %>
 <h1 class="text-center">Meal</h1>
 <p class="text-center"><a href="meals/new">Add New Meal</a></p>
 <div class="container">
@@ -17,7 +17,11 @@
 <h1 class="text-center">Recipe for Meal</h1>
 <p class="text-center"><a href="meals/new">Add New Meal</a></p>
 <div class="container">
-  <p><%=ingredients%></p>
+  <ul>
+    <%ingredients.forEach(ingredient => {%>
+    <li><%= ingredient.amount%> <%= ingredient.unit%> <a href='/ingredients/<%=ingredient.ingredient_id%>'><%= ingredient.name%></a></li>
+    <%})%>
+  </ul>
 </div>
 
 <%- include('../partials/footer') %>
