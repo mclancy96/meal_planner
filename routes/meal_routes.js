@@ -17,13 +17,6 @@ router.get('/meals', async function (req, res) {
     res.render("meals/meals", { meals: mealResults });
 });
 
-// Read one
-router.get('/meals/:id', async function (req, res) {
-    const mealResult = await meals.getMealById(req.params.id);
-    const ingredientsResult = await recipes.getRecipeByMealId(req.params.id);
-    res.render("meals/meal_single", { meal: mealResult[0], ingredients: ingredientsResult });
-});
-
 // Create
 router.post('/meals/create', async function (req, res) {
     try {
@@ -41,6 +34,14 @@ router.get('/meals/new', async function (req, res) {
     // Get all aisles and pass them down
     res.render("meals/add_meals");
 });
+
+// Read one
+router.get('/meals/:id', async function (req, res) {
+    const mealResult = await meals.getMealById(req.params.id);
+    const ingredientsResult = await recipes.getRecipeByMealId(req.params.id);
+    res.render("meals/meal_single", { meal: mealResult[0], ingredients: ingredientsResult });
+});
+
 
 // Read One
 router.get('/meals/:id/edit', async function (req, res) {

@@ -1,62 +1,30 @@
-<%- include('../partials/header', {pageTitle: "Add Ingredient"}) %>
-<h2 class="text-center">Add a New Ingredient</h2>
+<%- include('../partials/header', {pageTitle: "Add Meal"}) %>
+<h2 class="text-center">Add a New Meal</h2>
 <div class="container">
-  <form action="/ingredients/create" method="POST">
+  <form action="/meals/create" method="POST">
     <div class="form-group">
-      <label for="editIngredientName">Ingredient Name</label>
-      <input
-        type="text"
-        class="form-control"
-        id="editIngredientName"
-        name="name"
-        placeholder="Potato"
-        required
-      />
+      <label for="editMealName">Meal Name</label>
+      <input type="text" class="form-control" id="editMealName" name="name" placeholder="Potato" required />
     </div>
     <div class="form-group">
-      <label for="editAisle">Aisle</label>
-      <select
-        id="editAisle"
-        name="aisle"
-        class="form-select"
-        aria-label="Select a aisle"
-      >
-        <option selected>Select aisle</option>
-        <option value="1">One</option>
-        <option value="2">Two</option>
-        <option value="3">Three</option>
-      </select>
+      <label for="editMealServings">Meal Servings</label>
+      <input type="number" class="form-control" id="editMealServings" name="servings" placeholder="3" />
     </div>
     <div class="form-group">
-      <label for="editTemperature">Temperature</label>
-      <select
-        id="editTemperature"
-        name="temperature"
-        class="form-select"
-        aria-label="Select a temperature"
-      >
-        <option selected>Select a temperature</option>
-        <option value="DRY">Dry</option>
-        <option value="COOL">Cool</option>
-        <option value="FROZEN">Frozen</option>
-      </select>
+      <label for="editMealCalories">Meal Calories</label>
+      <input type="number" class="form-control" id="editMealCalories" name="calories" placeholder="360" />
     </div>
     <div class="form-group">
-      <label for="editDetails">Details</label>
-      <input
-        type="text"
-        class="form-control"
-        id="editDetails"
-        name="details"
-        placeholder="Some text about the ingredient"
-        required
-      />
+      <label for="editMealCookTime">Meal Cook Time in Minutes</label>
+      <input type="number" class="form-control" id="editMealCookTime" name="cookTime" placeholder="20" />
+    </div>
+    <div class="form-group">
+      <label for="editMealRecipeUrl">Meal Recipe Url</label>
+      <input type="number" class="form-control" id="editMealRecipeUrl" name="recipe_url" placeholder="www.google.com" />
     </div>
     <div class="text-center m-3">
-      <a href="/ingredients"
-        ><button type="button" class="btn btn-secondary">Cancel</button></a
-      >
-      <button type="submit" class="btn btn-primary">Create Ingredient</button>
+      <a href="/meals"><button type="button" class="btn btn-secondary">Cancel</button></a>
+      <button type="submit" class="btn btn-primary">Create Meal</button>
     </div>
   </form>
 </div>
