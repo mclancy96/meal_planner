@@ -11,49 +11,49 @@ router.use(
 );
 
 // Read all
-router.get('/plannedMeals', async function (req, res) {
+router.get('/planned_meals', async function (req, res) {
     const plannedMealResults = await plannedMeals.getPlannedMeals();
     res.render("plannedMeals/plannedMeals", { plannedMeals: plannedMealResults });
 });
 
 // Create
-router.post('/plannedMeals/create', async function (req, res) {
+router.post('/planned_meals/create', async function (req, res) {
     try {
         await plannedMeals.createPlannedMeal(req.body);
-        res.redirect("/plannedMeals");
+        res.redirect("back");
     }
     catch (err) {
         console.log("Error creating plannedMeal: ", err);
-        res.redirect('/plannedMeals');
+        res.redirect('back');
     }
 });
 
 // New PlannedMeal Page
-router.get('/plannedMeals/new', async function (req, res) {
+router.get('/planned_meals/new', async function (req, res) {
     // Get all aisles and pass them down
     res.render("plannedMeals/add_plannedMeals");
 });
 
 // Read One
-router.get('/plannedMeals/:id/edit', async function (req, res) {
+router.get('/planned_meals/:id/edit', async function (req, res) {
     const plannedMealResult = await plannedMeals.getPlannedMealById(req.params.id);
     res.render("plannedMeals/edit_plannedMeals", { plannedMeal: plannedMealResult[0] });
 });
 
 // Update
-router.post('/plannedMeals/:id/edit', async function (req, res) {
+router.post('/planned_meals/:id/edit', async function (req, res) {
     try {
         await plannedMeals.updatePlannedMeal(req.params.id, req.body);
-        res.redirect("/plannedMeals");
+        res.redirect("back");
     }
     catch (err) {
         console.log("Error updating plannedMeal: ", err);
-        res.redirect('/plannedMeals');
+        res.redirect('back');
     }
 });
 
 // Delete
-router.post('/plannedMeals/:id/delete', async function (req, res) {
+router.post('/planned_meals/:id/delete', async function (req, res) {
     try {
         await plannedMeals.deletePlannedMeal(req.params.id);
         res.redirect("/plannedMeals");

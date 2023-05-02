@@ -10,18 +10,23 @@ const getDayList = () => {
     return daylist;
 }
 
+const formatDate = (dateObject) => {
+    return `${dateObject.getFullYear()}/${(dateObject.getMonth() + 1) < 10 ? "0" + (dateObject.getMonth() + 1) : (dateObject.getMonth() + 1)}/${(dateObject.getDate()) < 10 ? "0" + (dateObject.getDate()) : (dateObject.getDate())}`
+}
+
 const getStartAndEndDate = () => {
     const dateList = [];
     const today = new Date(Date.now());
     today.setHours(0, 0, 0);
     const thirtyDaysLater = new Date(today);
     thirtyDaysLater.setDate(today.getDate() + 30);
-    dateList.push(`${today.getFullYear()}/${(today.getMonth() + 1) < 10 ? "0" + (today.getMonth() + 1) : (today.getMonth() + 1)}/${(today.getDate()) < 10 ? "0" + (today.getDate()) : (today.getDate())}`)
-    dateList.push(`${thirtyDaysLater.getFullYear()}/${(thirtyDaysLater.getMonth() + 1) < 10 ? "0" + (thirtyDaysLater.getMonth() + 1) : (thirtyDaysLater.getMonth() + 1)}/${(thirtyDaysLater.getDate()) < 10 ? "0" + (thirtyDaysLater.getDate()) : (thirtyDaysLater.getDate())}`)
+    dateList.push(formatDate(today))
+    dateList.push(formatDate(thirtyDaysLater))
     return dateList;
 }
 
 module.exports = {
     getDayList,
-    getStartAndEndDate
+    getStartAndEndDate,
+    formatDate
 }

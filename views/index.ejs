@@ -10,9 +10,9 @@
     <% let plannedMeal = plannedMeals.find(e => e['date'].getTime() == date.getTime())%>
     <% let dateString = date.toDateString()%>
     <%if(plannedMeal){%>
-    <%- include('partials/day_card',{day:dateString, plannedMeal:plannedMeal, meals:meals})%>
+    <%- include('partials/day_card',{day:dateString, plannedMeal:plannedMeal, meals:meals, seconds:date.getTime()})%>
     <%} else {%>
-    <%- include('partials/day_card_empty',{day:dateString, meals:meals})%>
+    <%- include('partials/day_card_empty',{day:dateString, meals:meals, seconds:date.getTime()})%>
     <%} %>
     <%} %>
   </div>

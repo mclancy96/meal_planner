@@ -1,11 +1,11 @@
 <form action="/planned_meals/<%=route%>" method="post">
-  <select id="meal_select" name="meal_select" class="form-select" aria-label="Select a meal">
+  <select id="meal_id" name="meal_id" class="form-select" aria-label="Select a meal">
     <option selected>Click to see meals</option>
     <%meals.forEach(meal => {%>
     <option value="<%=meal.meal_id%>"><%=meal.name%></option>
     <%})%>
-
   </select>
+  <input hidden name="date" value="<%=seconds%>">
   <br />
   <button type="submit" class="btn btn-success">Add meal to day</button>
 </form>

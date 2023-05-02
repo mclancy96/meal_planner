@@ -3,6 +3,7 @@
  */
 
 const db = require('./db');
+const dateFuncs = require('../public/dateFunctions');
 
 async function getPlannedMeals(startDate, endDate) {
     const plannedMeals = await db.query(
@@ -19,18 +20,20 @@ async function getPlannedMealById(plannedMealId) {
 }
 
 async function createPlannedMeal(plannedMealObject) {
+    const meal_date = new Date(parseInt(plannedMealObject.date));
     const updateStatus = await db.query(
         `INSERT INTO Planned_Meals (date, meal_id)
-        VALUES("${plannedMealObject.date}", 
+        VALUES("${dateFuncs.formatDate(meal_date)}", 
         "${plannedMealObject.meal_id}");`
     );
     return updateStatus;
 }
 
 async function updatePlannedMeal(plannedMealId, plannedMealObject) {
+    const meal_date = new Date(parseInt(plannedMealObject.date));
     const updateStatus = await db.query(
         `UPDATE Planned_Meals
-        SET date = "${plannedMealObject.date}", 
+        SET date = "${dateFuncs.formatDate(meal_date)}", 
         meal_id= "${plannedMealObject.meal_id}"
         WHERE planned_meal_id = "${plannedMealId}";`
     );
