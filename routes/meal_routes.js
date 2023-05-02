@@ -22,8 +22,21 @@ router.get('/meals', async function (req, res) {
 router.post('/meals/create', async function (req, res) {
     try {
         await meals.createMeal(req.body);
-
-        // const createdMeal =
+        const newMeal = await meals.getMealByName(req.body.name);
+        for (let i = 0; i < 20; i++) {
+            let amount = req.body[`amount_${i}`];
+            let unit = req.body[`unit_${i}`];
+            let ingredient_id = req.body[`ingredient_id_${i}`];
+            if (!amount || !unit || !ingredient_id) {
+                break;
+            }
+            let recipeBody = {
+                amount: amount,
+                unit: unit,
+                ingredient_id: ingredient_id
+            };
+            await recipes.createRecipe(recipeBody);
+        }
         res.redirect("/meals");
     }
     catch (err) {

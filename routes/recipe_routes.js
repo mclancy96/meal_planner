@@ -28,12 +28,6 @@ router.post('/recipes/create', async function (req, res) {
     }
 });
 
-// New Recipe Page
-router.get('/recipes/new', async function (req, res) {
-    // Get all aisles and pass them down
-    res.render("recipes/add_recipes");
-});
-
 // Edit the recipe for a meal
 router.get('/recipes/:meal_id/edit', async function (req, res) {
     const recipeResult = await recipes.getRecipeByMealId(req.params.meal_id);
