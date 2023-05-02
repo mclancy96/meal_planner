@@ -1,5 +1,5 @@
 <form action="/planned_meals/<%=route%>" method="post">
-  <select id="" name="meal_select" class="form-select" aria-label="Select a meal">
+  <select id="meal_select" name="meal_select" class="form-select" aria-label="Select a meal">
     <option selected>Click to see meals</option>
     <%meals.forEach(meal => {%>
     <option value="<%=meal.meal_id%>"><%=meal.name%></option>
