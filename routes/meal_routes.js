@@ -5,6 +5,7 @@ const express = require('express');
 const router = express.Router();
 const meals = require('../services/meal_services');
 const recipes = require('../services/recipe_services');
+const ingredients = require('../services/ingredient_services');
 router.use(
     express.urlencoded({
         extended: true,
@@ -21,6 +22,8 @@ router.get('/meals', async function (req, res) {
 router.post('/meals/create', async function (req, res) {
     try {
         await meals.createMeal(req.body);
+
+        // const createdMeal =
         res.redirect("/meals");
     }
     catch (err) {
@@ -31,8 +34,8 @@ router.post('/meals/create', async function (req, res) {
 
 // New Meal Page
 router.get('/meals/new', async function (req, res) {
-    // Get all aisles and pass them down
-    res.render("meals/add_meals");
+    const ingredientsResult = await ingredients.getIngredients();
+    res.render("meals/add_meals", { ingredients: ingredientsResult });
 });
 
 // Read one

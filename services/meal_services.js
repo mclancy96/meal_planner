@@ -29,11 +29,12 @@ async function getMealByName(name) {
 
 async function createMeal(mealObject) {
     const updateStatus = await db.query(
-        `INSERT INTO Meals (name, servings, calories, cookTime, recipe_url)
+        `INSERT INTO Meals (name, servings, calories, cookTime, instructions, recipe_url)
         VALUES("${mealObject.name}", 
         "${mealObject.servings}",
         "${mealObject.calories}", 
         "${mealObject.cookTime}", 
+        "${mealObject.instructions}",
         "${mealObject.recipe_url}");`
     );
     return updateStatus;

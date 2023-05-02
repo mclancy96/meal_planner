@@ -7,7 +7,7 @@ const db = require('./db');
 async function getIngredients() {
 
     const ingredients = await db.query(
-        `SELECT * FROM Ingredients`
+        `SELECT * FROM Ingredients ORDER BY name;`
     );
 
     return ingredients;

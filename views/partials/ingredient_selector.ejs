@@ -1,0 +1,27 @@
+<div class="row g-3 align-items-center form-group">
+  <div class="col-3">
+    <input type="number" class="form-control" name="amount<%=input_id%>" id='amount<%=input_id%>' placeholder="1" aria-label="1">
+  </div>
+  <div class="col-4">
+    <label class="visually-hidden" for="unitSelect">Unit</label>
+    <select class="form-select" name="unit<%=input_id%>" id="unitSelect<%=input_id%>">
+      <option selected>Choose a unit</option>
+      <option value="cup">Cup</option>
+      <option value="qt">Quart</option>
+      <option value="tbsp">Tablespoon</option>
+      <option value="tsp">Teaspoon</option>
+      <option value="oz">Ounce</option>
+      <option value="lbs">Pound</option>
+      <option value="unit">Unit (for those not listed)</option>
+    </select>
+  </div>
+  <div class="col-5">
+    <label class="visually-hidden" for="ingredientSelector">Unit</label>
+    <select class="form-select" name="unit<%=input_id%>" id="ingredientSelector<%=input_id%>">
+      <option selected>Choose an ingredient</option>
+      <%ingredients.forEach(ingredient => {%>
+      <option value="<%=ingredient.ingredient_id%>"><%=ingredient.name%></option>
+      <%})%>
+    </select>
+  </div>
+</div>
