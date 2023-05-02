@@ -40,13 +40,13 @@ app.get('/', async function (req, res) {
     const days = dateFuncs.getDayList();
     const dateRange = dateFuncs.getStartAndEndDate();
     const plannedMeals = await plannedMealServices.getPlannedMeals(dateRange[0], dateRange[1]);
-    console.log(plannedMeals);
     const mealList = [];
     for (meal of plannedMeals) {
-        const mealDetails = await mealServices.getMealById(meal.meal_id);
-        mealList.push(mealDetails[0])
+        if ((mealList.find(e => e.meal_id == meal.meal_id)) == undefined) {
+            const mealDetails = await mealServices.getMealById(meal.meal_id);
+            mealList.push(mealDetails[0])
+        }
     }
-    console.log(mealList);
     try {
         res.render("index", { days: days, meals: mealList, plannedMeals: plannedMeals });
     } catch (err) {
