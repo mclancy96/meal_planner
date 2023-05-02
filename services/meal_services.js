@@ -20,6 +20,13 @@ async function getMealById(mealId) {
     return meal;
 }
 
+async function getMealByName(name) {
+    const meal = await db.query(
+        `SELECT * FROM Meals WHERE name = ${name};`
+    );
+    return meal;
+}
+
 async function createMeal(mealObject) {
     const updateStatus = await db.query(
         `INSERT INTO Meals (name, servings, calories, cookTime, recipe_url)
@@ -56,6 +63,7 @@ async function deleteMeal(mealId) {
 module.exports = {
     getMeals,
     getMealById,
+    getMealByName,
     createMeal,
     updateMeal,
     deleteMeal

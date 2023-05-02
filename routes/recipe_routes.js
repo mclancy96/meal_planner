@@ -34,10 +34,10 @@ router.get('/recipes/new', async function (req, res) {
     res.render("recipes/add_recipes");
 });
 
-// Read One
-router.get('/recipes/:id/edit', async function (req, res) {
-    const recipeResult = await recipes.getRecipeById(req.params.id);
-    res.render("recipes/edit_recipes", { recipe: recipeResult[0] });
+// Edit the recipe for a meal
+router.get('/recipes/:meal_id/edit', async function (req, res) {
+    const recipeResult = await recipes.getRecipeByMealId(req.params.meal_id);
+    res.render("recipes/edit_recipes", { recipes: recipeResult });
 });
 
 // Update

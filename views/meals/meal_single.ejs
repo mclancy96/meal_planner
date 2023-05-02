@@ -6,7 +6,7 @@
   <p><b>Servings</b> <%=meal.servings%></p>
   <p><b>Calories</b> <%=meal.calories%></p>
   <p><b>Cook Time</b> <%=meal.cookTime%></p>
-  <p><b>URL</b> <%=meal.recipe_url%></p>
+  <p><b>URL</b> <a href="<%=meal.recipe_url%>"><%=meal.recipe_url%></a></p>
   <div class="text-center">
     <a href="/meals/<%=meal.meal_id%>/edit"><button type="submit" class="btn btn-success">Edit Meal Info</button></a>
     <form action="/meals/<%= meal.meal_id %>/delete" method="POST">
@@ -25,6 +25,11 @@
   <div class="text-center">
     <a href="/recipes/<%=meal.meal_id%>/edit"><button type="submit" class="btn btn-success">Edit Recipe</button></a>
   </div>
+</div>
+<h2 class="text-center mt-3">Instructions</h2>
+<p class="text-center text-body-secondary"><small>(Part of Meal Info)</small></p>
+<div class="container" style="white-space: pre-wrap">
+  <%=meal.instructions%>
 </div>
 
 <%- include('../partials/footer') %>

@@ -1,5 +1,6 @@
 <%- include('../partials/header', {pageTitle: "Add Meal"}) %>
 <h2 class="text-center">Add a New Meal</h2>
+<p class="text-center"><small>First use this form to create the meal, then click the "Edit Recipe" button to add the recipe for this meal</small></p>
 <div class="container">
   <form action="/meals/create" method="POST">
     <div class="form-group">
@@ -21,6 +22,10 @@
     <div class="form-group">
       <label for="editMealRecipeUrl">Meal Recipe Url</label>
       <input type="number" class="form-control" id="editMealRecipeUrl" name="recipe_url" placeholder="www.google.com" />
+    </div>
+    <div class="form-group">
+      <label for="instructions">Instructions for Meal</label>
+      <textarea id='instructions' name='instructions'></textarea>
     </div>
     <div class="text-center m-3">
       <a href="/meals"><button type="button" class="btn btn-secondary">Cancel</button></a>
