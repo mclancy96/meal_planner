@@ -8,10 +8,6 @@ async function getPlannedMeals(startDate, endDate) {
     const plannedMeals = await db.query(
         `SELECT * FROM Planned_Meals where date between '${startDate}' and '${endDate}' ORDER BY date;`
     );
-    console.log("Planned meals", plannedMeals)
-    console.log("start date", startDate)
-    console.log("end date", endDate)
-
     return plannedMeals;
 }
 
